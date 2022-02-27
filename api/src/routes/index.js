@@ -4,6 +4,6 @@ const routeTodo = require("./todo.js");
 const routeFolder = require("./folder.js");
 
 router.use("/todo", routeTodo);
-router.use("/folder", routeFolder)
+router.use("/folder", routeFolder);
 
 module.exports = router;

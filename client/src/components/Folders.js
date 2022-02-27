@@ -54,7 +54,7 @@ export default function Folders() {
                   <Link
                     to={`/todo/${folder.id}`}
                     style={{ textDecoration: "none" }}
-                    className="link"
+                    className="view"
                   >
                     <h6>View items</h6>
                   </Link>

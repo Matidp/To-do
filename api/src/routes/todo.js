@@ -1,11 +1,11 @@
-const express = require("express")
+const express = require("express");
 const router = express.Router();
 const {
   getTodos,
   createTodo,
   deleteTodo,
   updateTodo,
-  getTodoById
+  getTodoById,
 } = require("../controllers/todo.js");
 
 router.get("/:folderId", getTodos);

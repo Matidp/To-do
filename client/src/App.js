@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Folders />} />
         <Route path="/todo/:folderId" element={<Todo />} />
-        <Route path="/edit/:todoId" element={<Edit/>} />
+        <Route path="/edit/:todoId" element={<Edit />} />
 
         {/* <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} /> */}

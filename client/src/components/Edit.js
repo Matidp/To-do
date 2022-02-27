@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./style/edit.css"
+import "./style/edit.css";
 
 export default function Edit() {
   const { todoId } = useParams();
@@ -49,11 +49,10 @@ export default function Edit() {
           onChange={(e) => handleInputChange(e)}
         />
         <div className="eButtons">
-
-        <input className="btn" type="submit" value="Save" />
-        <button className="btn" value="Cancel" onClick={(e) => cancel(e)}>
-          Cancel
-        </button>
+          <input className="btn" type="submit" value="Save" />
+          <button className="btn" value="Cancel" onClick={(e) => cancel(e)}>
+            Cancel
+          </button>
         </div>
       </form>
     </div>

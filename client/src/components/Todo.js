@@ -54,49 +54,51 @@ export default function Todo() {
     });
     setState({
       ...state,
-      done: !todo.done
-    })
+      done: !todo.done,
+    });
   };
 
   const back = (e) => {
     e.preventDefault();
     navigate("/");
-  }
+  };
   return (
     <div className="container">
       <h1>To-Do List</h1>
-      { <div className="tdlist">
-        {todos.length > 0
-          ? todos.map((todo) => (
-              <div className="todo" key={todo.id}>
-                <label className="task">
-                  <input
-                    type="checkbox"
-                    checked={todo.done}
-                    onChange={() => handleChecked(todo)}
-                  />
-                  {todo.task}
-                </label>
-                <div className="buttons">
-                  <button
-                    className="delete"
-                    onClick={() => handleDelete(todo.id)}
-                  >
-                    {" "}
-                    X{" "}
-                  </button>
-                  <Link
-                    to={`/edit/${todo.id}`}
-                    style={{ textDecoration: "none" }}
-                    className="link"
-                  >
-                    <h6>Edit</h6>
-                  </Link>
+      {
+        <div className="tdlist">
+          {todos.length > 0
+            ? todos.map((todo) => (
+                <div className="todo" key={todo.id}>
+                  <label className="task">
+                    <input
+                      type="checkbox"
+                      checked={todo.done}
+                      onChange={() => handleChecked(todo)}
+                    />
+                    {todo.task}
+                  </label>
+                  <div className="buttons">
+                    <button
+                      className="delete"
+                      onClick={() => handleDelete(todo.id)}
+                    >
+                      {" "}
+                      X{" "}
+                    </button>
+                    <Link
+                      to={`/edit/${todo.id}`}
+                      style={{ textDecoration: "none" }}
+                      className="link"
+                    >
+                      <h6>Edit</h6>
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))
-          : null}
-      </div> }
+              ))
+            : null}
+        </div>
+      }
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <input
           className="input"
@@ -108,7 +110,9 @@ export default function Todo() {
         />
         <input className="add" type="submit" value="Add" />
       </form>
-      <button onClick={(e)=>back(e)} className="back">BACK TO FOLDERS</button>
+      <button onClick={(e) => back(e)} className="back">
+        BACK TO FOLDERS
+      </button>
     </div>
   );
 }
