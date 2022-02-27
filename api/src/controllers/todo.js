@@ -1,22 +1,27 @@
-const { Todo } = require("../database");
+const { Todo, Folder } = require("../database");
 
 const getTodos = async (req, res) => {
+  const { folderId } = req.params;
   try {
-    const todos = await Todo.findAll();
-    res.json(todos)
+    const todos = await Todo.findAll({ where: { FolderId: folderId } });
+    todos ? res.json(todos) : res.json([]);
   } catch (err) {
-    res.status(404).json("not found");
+    res.status(404).json([]);
   }
 };
 
 const createTodo = async (req, res) => {
-  const {task, done} = req.body
-  console.log(task, done)
+  const { folderId } = req.params;
+  const { task, done } = req.body;
+  console.log(folderId)
   try {
-    const newTodo = await Todo.create({task: task, done: done});
+    const folder = await Folder.findByPk(folderId);
+    console.log(folder)
+    const newTodo = await Todo.create({ task: task, done: done });
+    await folder.addTodo(newTodo);
     res.json(newTodo);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).json("Server cannot create");
   }
 };
@@ -53,12 +58,12 @@ const updateTodo = async (req, res) => {
 
 const getTodoById = async (req, res) => {
   const id = req.params.id;
-  try{
+  try {
     const todoDetail = await Todo.findByPk(id);
-    res.json(todoDetail)
-  }catch(err){
-    res.status(404).json("not found")
+    res.json(todoDetail);
+  } catch (err) {
+    res.status(404).json("not found");
   }
-}
+};
 
 module.exports = { getTodos, createTodo, deleteTodo, updateTodo, getTodoById };

@@ -8,9 +8,9 @@ const {
   getTodoById
 } = require("../controllers/todo.js");
 
-router.get("/", getTodos);
-router.get("/:id", getTodoById);
-router.post("/", createTodo);
+router.get("/:folderId", getTodos);
+router.get("/detail/:id", getTodoById);
+router.post("/:folderId", createTodo);
 router.delete("/:id", deleteTodo);
 router.put("/:id", updateTodo);
 
