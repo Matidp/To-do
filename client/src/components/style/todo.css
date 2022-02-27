@@ -70,3 +70,14 @@ h6 {
   background-color: transparent;
   border: 1px solid black;
 }
+
+.back {
+  border-radius: 3px;
+  margin-top: 1em;
+  cursor: pointer;
+  border: 1px solid black;
+  background-color: transparent;
+}
+.back:hover {
+  background-color: rgba(0, 0, 0, 0.123);
+}

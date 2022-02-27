@@ -108,7 +108,7 @@ export default function Todo() {
         />
         <input className="add" type="submit" value="Add" />
       </form>
-      <button onClick={(e)=>back(e)}>BACK TO FOLDERS</button>
+      <button onClick={(e)=>back(e)} className="back">BACK TO FOLDERS</button>
     </div>
   );
 }
