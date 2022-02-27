@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "./style/todo.css"
 
 export default function Todo() {
   const [todos, setTodos] = useState([]);
@@ -50,13 +51,13 @@ export default function Todo() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>To-Do List</h1>
-      <div>
+      <div className="tdlist">
         {todos.length > 0
           ? todos.map((todo) => (
-              <div key={todo.id}>
-              <label>
+              <div className="todo" key={todo.id}>
+              <label className="task">
                 <input
                   type="checkbox"
                   checked={todo.done}
@@ -64,17 +65,20 @@ export default function Todo() {
                 />
                 {todo.task}
               </label>
-              <button onClick={()=>handleDelete(todo.id)}> X </button>
-              <Link to={`/edit/${todo.id}`}>
+              <div className="buttons">
+              <button className="delete" onClick={()=>handleDelete(todo.id)}> X </button>
+              <Link to={`/edit/${todo.id}`} style={{ textDecoration: 'none' }} className="link">
                 <h6>Edit</h6>
               </Link>
+
+              </div>
               </div>
             ))
           : null}
       </div>
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <input type="text" name="task" value={state.task} onChange={(e) => handleInputChange(e)} />
-        <input type="submit" value="Add" />
+      <form className="form" onSubmit={(e) => handleSubmit(e)}>
+        <input className="input" type="text" name="task" autoComplete="off" value={state.task} onChange={(e) => handleInputChange(e)} />
+        <input className="add" type="submit" value="Add" />
       </form>
     </div>
   );

@@ -1,0 +1,25 @@
+.editForm {
+  padding: 1em;
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+}
+.eInput {
+  height: 2em;
+  border: 1px solid black;
+}
+.eButtons {
+  display: flex;
+  margin: 1em;
+  justify-content: space-around;
+}
+.btn {
+  border-radius: 3px;
+  line-height: 1.5;
+  background-color: transparent;
+  cursor: pointer;
+  border: 1px solid black;
+}
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.123);
+}
