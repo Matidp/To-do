@@ -51,4 +51,14 @@ const updateTodo = async (req, res) => {
   }
 };
 
-module.exports = { getTodos, createTodo, deleteTodo, updateTodo };
+const getTodoById = async (req, res) => {
+  const id = req.params.id;
+  try{
+    const todoDetail = await Todo.findByPk(id);
+    res.json(todoDetail)
+  }catch(err){
+    res.status(404).json("not found")
+  }
+}
+
+module.exports = { getTodos, createTodo, deleteTodo, updateTodo, getTodoById };
