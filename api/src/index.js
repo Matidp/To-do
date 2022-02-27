@@ -8,9 +8,6 @@ server.name = "API";
 
 server.use(express.json());
 server.use(morgan("dev"));
-server.use((req, res, next) => {
-  //despues
-});
 
 server.use("/", routes);
 

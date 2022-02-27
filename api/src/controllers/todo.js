@@ -1,19 +1,22 @@
-const { Todo } = require("../models/Todo");
+const { Todo } = require("../database");
 
 const getTodos = async (req, res) => {
   try {
     const todos = await Todo.findAll();
-    todos? res.json(todos) : res.json("there are no to-dos yet")
+    res.json(todos)
   } catch (err) {
     res.status(404).json("not found");
   }
 };
 
 const createTodo = async (req, res) => {
+  const {task, done} = req.body
+  console.log(task, done)
   try {
-    const newTodo = await Todo.create(req.body);
+    const newTodo = await Todo.create({task: task, done: done});
     res.json(newTodo);
   } catch (error) {
+    console.log(error)
     res.status(500).json("Server cannot create");
   }
 };

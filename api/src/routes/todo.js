@@ -1,10 +1,11 @@
-const router = require("express").Router();
+const express = require("express")
+const router = express.Router();
 const {
   getTodos,
   createTodo,
   deleteTodo,
   updateTodo,
-} = require("../controllers/todo");
+} = require("../controllers/todo.js");
 
 router.get("/", getTodos);
 router.post("/", createTodo);
