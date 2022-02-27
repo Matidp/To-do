@@ -24,10 +24,11 @@ export default function Todo() {
   };
   useEffect(() => {
     request();
-  });
+  }, [state]);
 
   const handleDelete = async (id) => {
     await axios.delete(`http://localhost:3005/todo/${id}`);
+    request();
   };
 
   const handleInputChange = (e) => {
@@ -51,6 +52,10 @@ export default function Todo() {
       task: todo.task,
       done: !todo.done,
     });
+    setState({
+      ...state,
+      done: !todo.done
+    })
   };
 
   const back = (e) => {
