@@ -10,7 +10,7 @@ export default function Edit() {
   const [task, setTask] = useState("");
 
   const getTodoById = async (id) => {
-    const todo = await axios(`http://localhost:3005/todo/${id}`);
+    const todo = await axios(`http://localhost:3005/todo/detail/${id}`);
     setTodoDetail(todo.data);
   };
 
@@ -24,12 +24,12 @@ export default function Edit() {
       task: task,
       done: todoDetail.done,
     });
-    navigate("/");
+    navigate(`/todo/${todoDetail.FolderId}`);
   };
 
   const cancel = (e) => {
     e.preventDefault();
-    navigate("/");
+    navigate(`/todo/${todoDetail.FolderId}`);
   };
 
   useEffect(() => {
